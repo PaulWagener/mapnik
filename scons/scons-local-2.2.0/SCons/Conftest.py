@@ -672,9 +672,8 @@ return 0;
             oldLIBS = -1
             sym = None
 
-        # Obviously the build arm program isn't going to run, no need to try
-        ret = 0 # context.BuildProg(text, suffix)
-        
+        ret = context.BuildProg(text, suffix)
+
         _YesNoResult(context, ret, sym, text,
                      "Define to 1 if you have the `%s' library." % lib_name)
         if oldLIBS != -1 and (ret or not autoadd):
