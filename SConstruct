@@ -1082,7 +1082,7 @@ if not preconfigured:
 
     LIBSHEADERS = [
         ['m', 'math.h', True,'C'],
-        ['ltdl', 'ltdl.h', True,'C'],
+        #['ltdl', 'ltdl.h', True,'C'],
         ['png', 'png.h', True,'C'],
         ['tiff', 'tiff.h', True,'C'],
         ['z', 'zlib.h', True,'C'],
