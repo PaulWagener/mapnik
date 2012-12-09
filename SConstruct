@@ -1077,8 +1077,8 @@ if not preconfigured:
 
     # libxml2 should be optional but is currently not
     # https://github.com/mapnik/mapnik/issues/913
-    if conf.parse_config('XML2_CONFIG',checks='--cflags'):
-        env['HAS_LIBXML2'] = True
+    #if conf.parse_config('XML2_CONFIG',checks='--cflags'):
+    env['HAS_LIBXML2'] = True
 
     LIBSHEADERS = [
         ['m', 'math.h', True,'C'],
