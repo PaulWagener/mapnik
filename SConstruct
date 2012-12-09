@@ -742,7 +742,7 @@ int main()
     if silent:
         context.did_show_result=1
     context.Result(ret)
-    return ret
+    return True # The above program won't be able to run as it is compiled for arm, just pretend we have the correct Boost
 
 def GetBoostLibVersion(context):
     ret = context.TryRun("""
