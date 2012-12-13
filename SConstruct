@@ -814,6 +814,7 @@ int main()
     return False
 
 def boost_regex_has_icu(context):
+    return True
     if env['RUNTIME_LINK'] == 'static':
         context.env.Append(LIBS='icui18n')
         context.env.Append(LIBS='icudata')
