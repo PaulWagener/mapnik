@@ -21,30 +21,23 @@
  *****************************************************************************/
 
 #include <mapnik/plugin.hpp>
-#include <ltdl.h>
+//#include <ltdl.h>
 
 namespace mapnik
 {
 
-PluginInfo::PluginInfo (const std::string& name,const lt_dlhandle module)
-    :name_(name),module_(module) {}
+PluginInfo::PluginInfo (const std::string& name)
+    :name_(name) {}
+PluginInfo::PluginInfo (std::string const& name)
+    :name_(name) {}
 
 PluginInfo::~PluginInfo()
 {
-    if (module_)
-    {
-        lt_dlclose(module_),module_=0;
-    }
 }
 
 const std::string& PluginInfo::name() const
 {
     return name_;
-}
-
-lt_dlhandle PluginInfo::handle() const
-{
-    return module_;
 }
 
 }

@@ -77,4 +77,8 @@ private:
     mutable layer_descriptor desc_;
 };
 
+const char * datasource_name();
+datasource* create(parameters const& params, bool bind);
+void destroy(datasource *ds);
+
 #endif //SHAPE_HPP

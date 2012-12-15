@@ -31,12 +31,13 @@
 #include <boost/algorithm/string.hpp>
 
 // ltdl
-#include <ltdl.h>
+//#include <ltdl.h>
 
 // stl
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
+#include "plugins/input/shape/shape_datasource.hpp"
 
 namespace mapnik
 {
@@ -49,12 +50,12 @@ bool is_input_plugin (std::string const& filename)
 
 datasource_cache::datasource_cache()
 {
-    if (lt_dlinit()) throw std::runtime_error("lt_dlinit() failed");
+    //if (lt_dlinit()) throw std::runtime_error("lt_dlinit() failed");
 }
 
 datasource_cache::~datasource_cache()
 {
-    lt_dlexit();
+    //lt_dlexit();
 }
 
 std::map<std::string,boost::shared_ptr<PluginInfo> > datasource_cache::plugins_;
@@ -63,6 +64,7 @@ std::vector<std::string> datasource_cache::plugin_directories_;
 
 datasource_ptr datasource_cache::create(const parameters& params, bool bind)
 {
+#if 0
     boost::optional<std::string> type = params.get<std::string>("type");
     if ( ! type)
     {
@@ -116,12 +118,18 @@ datasource_ptr datasource_cache::create(const parameters& params, bool bind)
     MAPNIK_LOG_DEBUG(datasource_cache) << "datasource_cache: Datasource=" << ds << " type=" << type;
 
     return ds;
+#endif
+    datasource *ds = ::create(params, bind);
+    return datasource_ptr(ds);
 }
 
-bool datasource_cache::insert(std::string const& type,const lt_dlhandle module)
+bool datasource_cache::insert(std::string const& type)
 {
+#if 0
     return plugins_.insert(make_pair(type,boost::make_shared<PluginInfo>
                                      (type,module))).second;
+#endif
+    return false;
 }
 
 std::string datasource_cache::plugin_directories()
@@ -142,6 +150,7 @@ std::vector<std::string> datasource_cache::plugin_names ()
 
 void datasource_cache::register_datasources(std::string const& str)
 {
+#if 0
 #ifdef MAPNIK_THREADSAFE
     mutex::scoped_lock lock(mapnik::singleton<mapnik::datasource_cache,
                             mapnik::CreateStatic>::mutex_);
@@ -173,10 +182,12 @@ void datasource_cache::register_datasources(std::string const& str)
                 }
         }
     }
+#endif
 }
 
 bool datasource_cache::register_datasource(std::string const& str)
 {
+#if 0
     bool success = false;
     try
     {
@@ -214,6 +225,8 @@ bool datasource_cache::register_datasource(std::string const& str)
                     << "Exception caught while loading plugin library: " << str;
     }
     return success;
+#endif
+    return false;
 }
 
 }

@@ -30,7 +30,7 @@
 #include <string>
 
 // ltdl
-#include <ltdl.h>
+//#include <ltdl.h>
 
 namespace mapnik
 {
@@ -38,12 +38,12 @@ class PluginInfo : boost::noncopyable
 {
 private:
     std::string name_;
-    lt_dlhandle module_;
+    //lt_dlhandle module_;
 public:
-    PluginInfo (const std::string& name,const lt_dlhandle module);
+    PluginInfo (const std::string& name);
     ~PluginInfo();
     const std::string& name() const;
-    lt_dlhandle handle() const;
+    //lt_dlhandle handle() const;
 };
 }
 

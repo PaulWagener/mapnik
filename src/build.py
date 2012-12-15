@@ -56,7 +56,7 @@ regex = 'boost_regex%s' % env['BOOST_APPEND']
 system = 'boost_system%s' % env['BOOST_APPEND']
 
 # clear out and re-set libs for this env
-lib_env['LIBS'] = ['freetype','ltdl','png','tiff','z','proj',env['ICU_LIB_NAME'],filesystem,system,regex]
+lib_env['LIBS'] = ['freetype','png','tiff','z','proj',env['ICU_LIB_NAME'],filesystem,system,regex]
 
 if env['JPEG']:
    lib_env['LIBS'].append('jpeg')
@@ -187,6 +187,13 @@ source = Split(
     text_properties.cpp
     xml_tree.cpp
     config_error.cpp
+
+    ../plugins/input/shape/dbfile.cpp
+    ../plugins/input/shape/shape_datasource.cpp
+    ../plugins/input/shape/shape_featureset.cpp
+    ../plugins/input/shape/shape_index_featureset.cpp
+    ../plugins/input/shape/shape_io.cpp
+    ../plugins/input/shape/shape_utils.cpp
     """
     )
 
