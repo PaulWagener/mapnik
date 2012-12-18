@@ -26,8 +26,6 @@
 namespace mapnik
 {
 
-PluginInfo::PluginInfo (const std::string& name)
-    :name_(name) {}
 PluginInfo::PluginInfo (std::string const& name)
     :name_(name) {}
 

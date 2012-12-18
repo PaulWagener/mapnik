@@ -43,6 +43,7 @@ libraries = []
 # Link Library to Dependencies
 libraries.append('mapnik')
 libraries.append(env['ICU_LIB_NAME'])
+libraries.append('icudata')
 libraries.append('boost_system%s' % env['BOOST_APPEND'])
 libraries.append('boost_filesystem%s' % env['BOOST_APPEND'])
 
