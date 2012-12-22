@@ -50,7 +50,22 @@ using mapnik::datasource_exception;
 using mapnik::datasource;
 using mapnik::parameters;
 
-DATASOURCE_PLUGIN(sqlite_datasource)
+//DATASOURCE_PLUGIN(sqlite_datasource)
+const char * sqlite_datasource_name()
+{
+    return sqlite_datasource::name();                                       \
+}
+
+datasource* sqlite_create(parameters const& params, bool bind)
+{
+    return new sqlite_datasource(params, bind);
+}
+
+void sqlite_destroy(datasource *ds)
+{
+    delete ds;
+}
+
 
 sqlite_datasource::sqlite_datasource(parameters const& params, bool bind)
     : datasource(params),

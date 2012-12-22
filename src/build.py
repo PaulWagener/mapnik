@@ -194,6 +194,9 @@ source = Split(
     ../plugins/input/shape/shape_index_featureset.cpp
     ../plugins/input/shape/shape_io.cpp
     ../plugins/input/shape/shape_utils.cpp
+
+    ../plugins/input/sqlite/sqlite_datasource.cpp
+    ../plugins/input/sqlite/sqlite_featureset.cpp
     """
     )
 

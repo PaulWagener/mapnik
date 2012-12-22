@@ -37,6 +37,7 @@
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
+#include "plugins/input/sqlite/sqlite_datasource.hpp"
 #include "plugins/input/shape/shape_datasource.hpp"
 
 namespace mapnik
@@ -119,7 +120,12 @@ datasource_ptr datasource_cache::create(const parameters& params, bool bind)
 
     return ds;
 #endif
-    datasource *ds = ::create(params, bind);
+    datasource *ds;
+    if(params.get<std::string>("type") == std::string("shape")) {
+        ds = ::shape_create(params, bind);
+    } else {
+        ds = ::sqlite_create(params, bind);
+    }
     return datasource_ptr(ds);
 }
 

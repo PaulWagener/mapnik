@@ -46,17 +46,17 @@
 #include <stdexcept>
 
 //DATASOURCE_PLUGIN(shape_datasource)
-const char * datasource_name()
+const char * shape_datasource_name()
 {
     return shape_datasource::name();                                       \
 }
 
-datasource* create(parameters const& params, bool bind)
+datasource* shape_create(parameters const& params, bool bind)
 {
     return new shape_datasource(params, bind);
 }
 
-void destroy(datasource *ds)
+void shape_destroy(datasource *ds)
 {
     delete ds;
 }

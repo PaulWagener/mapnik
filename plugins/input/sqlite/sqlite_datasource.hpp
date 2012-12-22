@@ -45,6 +45,9 @@
 // sqlite
 #include "sqlite_connection.hpp"
 
+using mapnik::datasource;
+using mapnik::parameters;
+
 class sqlite_datasource : public mapnik::datasource
 {
 public:
@@ -91,5 +94,9 @@ private:
     mutable bool using_subquery_;
     mutable std::vector<std::string> init_statements_;
 };
+
+const char * sqlite_datasource_name();
+datasource* sqlite_create(parameters const& params, bool bind);
+void sqlite_destroy(datasource *ds);
 
 #endif // MAPNIK_SQLITE_DATASOURCE_HPP
