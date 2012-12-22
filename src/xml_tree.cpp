@@ -40,14 +40,17 @@ namespace mapnik
 template <typename T>
 inline boost::optional<T> fast_cast(xml_tree const& tree, std::string const& value)
 {
-    try
-    {
-        return boost::lexical_cast<T>(value);
-    }
-    catch (boost::bad_lexical_cast const& ex)
-    {
+    // This used to be a boost::lexical_cast but for some reason it didn't pass on the same string
+    // to mapnik::boolean and friends in their stringstream functions.
+    // Instead of stream with 'true' it would give a stream with 'true\0\0\0<all kinds of random bytes>'
+    // The below code circumvents boost::lexical_cast and directly uses stream functions
+    T v;
+    std::istringstream valuestream(value);
+    valuestream >> v;
+    if (!valuestream)
         return boost::optional<T>();
-    }
+
+    return boost::optional<T>(v);
 }
 
 template <>
